@@ -1,6 +1,7 @@
 package model
 
 import "time"
+
 type Article struct {
 	title		string
 	id 			string
