@@ -1,27 +1,22 @@
 package main
 
 import (
-	"GolandProj/Redis/redisLearning/conf"
-	"GolandProj/Redis/redisLearning/model"
+	"fmt"
+	"redisLearning/conf"
+	"redisLearning/model"
+	server "redisLearning/service"
+	"time"
 )
 
 func main() {
 
 	client := conf.GetRedisClient()
-	article1 := &model.Article{
-		Title:  "java",
-		Id:     "1",
-		Link:   "java.com",
-		Poster: "小王",
-		Vote:   500,
-	}
-	article1.SetArticle(client)
-	Article2 := &model.Article{
-		Title:  "go",
-		Id:     "2",
-		Link:   "golang.com",
-		Poster: "小张",
-		Vote:   300,
-	}
-	Article2.SetArticle(client)
+	var article1, article2 *model.Article
+	article2 = &model.Article{}
+	article1 = &model.Article{}
+	server.PostArticle(client, article1, "java", "1", "java.com", "小王",1,time.Now().Unix() - model.ONE_WEEK_IN_SECONDS - 1)
+	server.PostArticle(client, article2, "go", "2", "golang.com", "小红", 1, time.Now().Unix())
+	article := server.GetArticle(client, 0, "time")
+	fmt.Println(article)
+
 }
