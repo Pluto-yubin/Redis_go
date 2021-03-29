@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"redisLearning/conf"
-	"redisLearning/model"
-	server "redisLearning/service"
+	"redis/conf"
+	"redis/model"
+	server "redis/service"
 	"time"
 )
 
