@@ -1,2 +1,2 @@
 # Redis_go
-随便学学
+用golang完成了部分redis实战教程里面的文章排序
