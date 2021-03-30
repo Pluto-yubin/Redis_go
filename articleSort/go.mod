@@ -1,4 +1,4 @@
-module redisLearning
+module redis
 
 go 1.16
 

@@ -34,7 +34,7 @@ func (a *Article) SetArticleScore(client *redis.Client) (err error) {
 
 func (a *Article) SetArticleTime(client *redis.Client) (err error) {
 	err = client.ZAdd("time", redis.Z{
-		Score: float64(a.PublishTime + VOTE_SCORE),
+		Score: float64(a.PublishTime),
 		Member: "Article:" + a.Id,
 	}).Err()
 	return
